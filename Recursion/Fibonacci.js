@@ -1,8 +1,8 @@
-const fibonacci = (times, value = 1, oldValue = 1) => {
+const fibonacci = (times, value = 0, oldValue = 0) => {
     if(times >= 1) {
-        let newValue = value + oldValue;
-        let oldVal = value;
-        return fibonacci(times - 1, newValue, oldVal);
+        let newValue = value === 0 ? value + 1 : value + oldValue;
+        let newOldValue = value;
+        return fibonacci(times - 1, newValue, newOldValue);
     } else { return value }
 }
 
