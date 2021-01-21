@@ -3,4 +3,4 @@ const fibonacci = (n) => {
     else return 1;
 }
 
-console.log(fibonacci(4));
+console.log(fibonacci(5));
