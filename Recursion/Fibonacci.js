@@ -12,4 +12,4 @@ const fibonacci = (times, value = 0, oldValue = 0) => {
     } else { return value || 1 }
 }
 
-console.log(fibonacci(1000));
+console.log(fibonacci(1000));  
