@@ -1,5 +1,6 @@
 /*
     This is the best approach, because it doesn't struggle with recursion calls.
+    We have sort of like a limit of calls in our recursives functions, but here we don't have this problem anymore, try this function with huge numbers, and then try to do the same in recursive approach!
 */
 
 const fib_bottom_up = (n) => {
