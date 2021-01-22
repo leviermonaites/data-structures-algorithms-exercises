@@ -6,4 +6,4 @@ const fibonacci = (times, value = 0, oldValue = 0) => {
     } else { return value || 1 }
 }
 
-console.log(fibonacci(4));
+console.log(fibonacci(3));
