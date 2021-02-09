@@ -7,4 +7,4 @@ const findTarget = (arr, target, lstIndex = 0, hstIndex = arr.length - 1) => {
     if(target < arr[middleIndex]) return findTarget(arr, target, lstIndex, middleIndex - 1);
 }
 
-console.log(findTarget(DataArray, 600));
+console.log(findTarget(DataArray, 6));
