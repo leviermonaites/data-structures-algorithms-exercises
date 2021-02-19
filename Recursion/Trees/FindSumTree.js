@@ -1,4 +1,4 @@
-const Node = require('../NodeClass');
+const Node = require('../../TwoChildrenNode');
 
 const node1 = new Node(1, null);
 const node2 = new Node(5, node1);

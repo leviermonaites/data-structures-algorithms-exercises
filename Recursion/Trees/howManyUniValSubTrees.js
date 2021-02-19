@@ -1,5 +1,5 @@
-import Node from '../NodeClass.js';
-import isTreeUnival from './IsTreeUniVal.js';
+import Node from '../../NodeClass.js';
+import isTreeUnival from './isTreeUniVal.js';
 
 const node1 = new Node(1, null);
 

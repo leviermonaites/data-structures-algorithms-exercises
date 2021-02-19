@@ -1,4 +1,4 @@
-const memo = new Array();
+let memo = [];
 const fib = (n) => {
     if(memo[n]) return memo[n];
     let result;
@@ -8,4 +8,4 @@ const fib = (n) => {
     return result;
 }
 
-console.log(fib(10000));
+console.log(fib(1000));

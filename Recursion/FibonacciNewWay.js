@@ -18,7 +18,7 @@
 
 /*
     This code is smaller than the original file, but it's not better, if you try to execute it with a high number, like 100, you'll see the difference.
-    The best is the dynamic code, stored in DynamicProgramming folder.
+    The best way is the dynamic code, stored in DynamicProgramming folder.
 */
 
 const fibonacci = (n) => {
