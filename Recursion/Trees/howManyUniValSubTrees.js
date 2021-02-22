@@ -1,19 +1,7 @@
 import Node from '../../NodeClass.js';
 import isTreeUnival from './isTreeUniVal.js';
 
-const node1 = new Node(1, null);
-
-const node2 = new Node(1, node1);
-const node3 = new Node(1, node1);
-
-const node4 = new Node(1, node2);
-const node5 = new Node(1, node2);
-
-const node6 = new Node(1, node3);
-const node7 = new Node(1, node3);
-
-const howManyUniValSubTrees = (root, univalsubtrees = 0) => {
-  console.log(root);
+const howManyUnivalsubtrees = (root, univalsubtrees = 0) => {
   if (root === null) return (univalsubtrees += 1);
   if (!root.left && !root.right) return (univalsubtrees += 1);
 
@@ -25,12 +13,12 @@ const howManyUniValSubTrees = (root, univalsubtrees = 0) => {
     univalsubtrees += 1;
   }
 
-  univalsubtrees = howManyUniValSubTrees(root.left, univalsubtrees);
-  univalsubtrees = howManyUniValSubTrees(root.right, univalsubtrees);
+  univalsubtrees = howManyUnivalsubtrees(root.left, univalsubtrees);
+  univalsubtrees = howManyUnivalsubtrees(root.right, univalsubtrees);
   
   if (root.left.left && root.right.right && isTreeUnival(root)) univalsubtrees += 1;
   
   return univalsubtrees;
 };
 
-console.log(howManyUniValSubTrees(node1));
+export default howManyUnivalsubtrees;

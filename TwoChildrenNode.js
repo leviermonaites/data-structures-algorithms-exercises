@@ -8,7 +8,7 @@ export default class Node {
     this.left;
     this.right;
 
-    if (childOf !== null) {
+    if (childOf) {
       if (childOf.left) {
         if (childOf.right) throw new Error('Node already full');
         else childOf.right = this;
