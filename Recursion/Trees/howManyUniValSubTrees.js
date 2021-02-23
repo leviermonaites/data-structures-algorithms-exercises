@@ -1,4 +1,3 @@
-import Node from '../../NodeClass.js';
 import isTreeUnival from './isTreeUniVal.js';
 
 const howManyUnivalsubtrees = (root, univalsubtrees = 0) => {
