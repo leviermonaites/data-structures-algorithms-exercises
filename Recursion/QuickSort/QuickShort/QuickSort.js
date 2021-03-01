@@ -1,4 +1,4 @@
-const numbers = [3, -2, -1, 0, 2, 4, 1];
+const numbers = [0, 2, 0, 0, 3, 0, 1, 2, 1, 4, 2, 1, 0, 2, 1, 0, 3, 4, 0];
 
 const swap = (i, j) => [j, i];
 
@@ -12,7 +12,6 @@ const partition = (arr, l, r) => {
     }
   }
   [arr[i+1], arr[r]] = swap(arr[i + 1], arr[r]);
-  console.log(arr);
   return i + 1;
 };
 
