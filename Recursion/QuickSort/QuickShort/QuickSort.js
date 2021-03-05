@@ -5,13 +5,13 @@ const swap = (i, j) => [j, i];
 const partition = (arr, l, r) => {
   const pivot = arr[r];
   let i = l - 1;
-  for(let j = l; j < r; j++) {
-    if(arr[j] < pivot) {
+  for (let j = l; j < r; j++) {
+    if (arr[j] < pivot) {
       i += 1;
       [arr[i], arr[j]] = swap(arr[i], arr[j]);
     }
   }
-  [arr[i+1], arr[r]] = swap(arr[i + 1], arr[r]);
+  [arr[i + 1], arr[r]] = swap(arr[i + 1], arr[r]);
   return i + 1;
 };
 
