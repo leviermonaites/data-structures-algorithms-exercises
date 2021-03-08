@@ -1,12 +1,8 @@
-class Queue {
+import QueueInterface from "./QueueInterface.js";
+
+class Queue extends QueueInterface {
   constructor(length) {
-    this.elements = new Array(length + 1);
-    this.front = -1;
-    this.rear = 0;
-    this.isFull = false;
-    this.totalLength = length;
-    this.freeSpaces = new Array(length);
-    this.freeSpacesRear = 0;
+    super(length);
   }
 
   enqueue(element) {
@@ -36,7 +32,7 @@ class Queue {
   moveRear(to) {
     switch (to) {
       case this.totalLength:
-        return 0;
+        if (!this.elements[0]) return 0;
       case -1:
         return this.totalLength - 1;
       default:
@@ -47,15 +43,13 @@ class Queue {
   updateValues(method) {
     switch (method) {
       case "enq": {
-        this.pointingAt = this.moveFront(this.front + 1);
-        this.freeSpace = this.moveRear(this.rear + 1);
+        this.rear = this.moveRear(this.rear + 1);
         break;
       }
 
       case "dq": {
-        this.freeSpaces[this.freeSpacesRear] = this.moveFront;
-        this.freeSpacesRear++;
         this.front = this.moveFront(this.front + 1);
+        break;
       }
     }
     this.checkIfQueueIsFull();
@@ -63,23 +57,18 @@ class Queue {
   }
 
   checkIfQueueIsFull() {
-    if (this.rear === this.totalLength) {
-      if (this.elements[0]) this.isFull = true;
-      else this.isFull = false;
-    }
+    if (this.rear >= this.totalLength || this.elements[this.rear + 1]) {
+      this.isFull = true;
+    } else this.isFull = false;
   }
 }
 
 const createNewQueue = (length) => new Queue(length);
 
 const queue1 = createNewQueue(5);
-queue1.enqueue(5);
-queue1.enqueue(5);
-queue1.enqueue(5);
-queue1.enqueue(5);
-queue1.enqueue(5);
-queue1.enqueue(5);
 console.log(queue1.enqueue(5));
+console.log(queue1.enqueue(6));
+// console.log(queue1.enqueue(5));
 // console.log(queue1.dequeue());
 // console.log(queue1);
 // console.log(queue1.enqueue(5));
