@@ -18,7 +18,6 @@ class QueueInterface {
   }
   set front(v) {
     this._front = v;
-    console.log(this._front);
   }
   get rear() {
     return this._rear;
