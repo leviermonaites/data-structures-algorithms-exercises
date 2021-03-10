@@ -9,3 +9,4 @@ stack.push(89);
 stack.push(89);
 console.log(stack.push(89));
 console.log(stack.toString());
+console.log(stack.toArray());
