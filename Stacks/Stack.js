@@ -42,17 +42,11 @@ class Stack extends StackInterface {
   }
 
   toArray() {
-    if (typeof this.elements === typeof "") {
-      return (this.elements = this.elements.split(","));
-    }
-    return this.elements;
+    return [...this.elements];
   }
 
   toString() {
-    if (typeof this.elements === typeof []) {
-      return (this.elements = this.elements.toString());
-    }
-    return this.elements;
+    return `${this.elements.toString()}`;
   }
 }
 
