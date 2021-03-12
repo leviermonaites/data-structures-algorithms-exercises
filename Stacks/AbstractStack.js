@@ -1,4 +1,4 @@
-class StackInterface {
+class AbstractStack {
   constructor(length) {
     this._pointer = -1;
     this._stackLength = length;

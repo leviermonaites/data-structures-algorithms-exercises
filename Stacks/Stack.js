@@ -1,4 +1,4 @@
-import StackInterface from "./StackInterface.js";
+import StackInterface from "./AbstractStack.js";
 
 class Stack extends StackInterface {
   constructor(length) {
