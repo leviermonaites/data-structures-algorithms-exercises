@@ -1,10 +1,7 @@
 class Dictionary {
-  constructor(length, addMethod) {
+  constructor(length) {
     this._elements = new Array(length);
     this._rear = 0;
-    if (addMethod instanceof Function) {
-      this.add = addMethod;
-    }
   }
 
   add(element) {
