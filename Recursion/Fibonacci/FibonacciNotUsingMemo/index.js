@@ -18,13 +18,12 @@
 
 /*
     This code is smaller than the original file, but it's not better, if you try to execute it with a high number, like 100, you'll see the difference.
-    The best way is the dynamic code, stored in DynamicProgramming folder.
+    The best way is the dynamic code, stored in the FibonacciMemoize folders.
 */
 
 const fibonacci = (n) => {
-    if(n >= 3) return fibonacci(n-1) + fibonacci(n-2);
-    else return 1;
-}
-
+  if (n >= 3) return fibonacci(n - 1) + fibonacci(n - 2);
+  else return 1;
+};
 
 console.log(fibonacci(4));

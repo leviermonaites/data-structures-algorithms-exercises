@@ -15,7 +15,7 @@ class HashTable {
     try {
       Reflect.apply(this.hashFunctions.add, this, [element]);
     } catch (e) {
-      return "Element rejected. -> We are working as fast as possible to solve the problem, trust me!";
+      return e.message;
     }
     this._elementsAdded++;
     return "Element added successfully";

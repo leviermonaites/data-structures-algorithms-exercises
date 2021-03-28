@@ -3,6 +3,8 @@ import scanf from "scanf";
 
 class DoubleHashing extends HashFunctionInterface {
   add(element) {
+    if (!element)
+      throw new Error("You must provide an element to add into the hash table");
     if (DoubleHashing.checkArrayIsTwoPartsFull(this)) {
       // prettier-ignore
       [
@@ -16,6 +18,7 @@ class DoubleHashing extends HashFunctionInterface {
 
     const index = DoubleHashing.findIndex(this, element.key, "add");
     this.dictionary._elements[index] = element;
+
     return element;
   }
 
@@ -26,6 +29,7 @@ class DoubleHashing extends HashFunctionInterface {
 
   delete(key) {
     const indexc = DoubleHashing.findIndex(this, key);
+
     if (indexc) {
       this.dictionary._elements[indexc] = null;
       return "Deleted sucessfully!";
@@ -37,9 +41,10 @@ class DoubleHashing extends HashFunctionInterface {
       "Please insert a prime positive number greater than the former length to resize your array"
     );
     const newLength = scanf("%d");
-
     const newArr = new Array(newLength);
+
     arr.forEach((v, i) => (newArr[i] = v));
+
     return [newArr, newLength];
   }
 
@@ -61,6 +66,7 @@ class DoubleHashing extends HashFunctionInterface {
 
     for (let i = 2; i < hashTable.dictionaryLength; i++) {
       indexc = (index + i * c) % hashTable.dictionaryLength;
+
       if (!hashTable.dictionary._elements[indexc]) {
         if (methodType === "add") return indexc;
       } else if (hashTable.dictionary._elements[indexc].key === key) {

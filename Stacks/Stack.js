@@ -1,6 +1,6 @@
-import StackInterface from "./AbstractStack.js";
+import AbstractStack from "./AbstractStack.js";
 
-class Stack extends StackInterface {
+class Stack extends AbstractStack {
   constructor(length) {
     super(length);
   }
