@@ -34,20 +34,48 @@ class DynamicArray {
 
   removeAt(index: number) {
     if(index > this.len) return "Element not found!";
+    if(index < 0) return "Element not found!";
+
     let elIndex = index;
-    if(index < 0) {
-      // Implement negative numbers functionality
-      if(this.arr[this.len - index - 1]) {
-        elIndex = this.len - index - 1;
-      } else return "Element not found!";
-    }
     this.capacity = --this.len;
     let new_arr = new Array(this.capacity);
     for(let i=0, j=0; i <= this.len; i++, j++) {
-      if(i == elIndex) j--;
+      if(i == elIndex) j--; // Skip over elIndex by fixing j temporarily
       else new_arr[j] = this.arr[i];
     }
     this.arr = new_arr;
+  }
+
+  remove(el: any) {
+    for (let i = 0; i < this.len; i++) {
+      if(this.arr[i] === el) 
+        { this.removeAt(i); return true; }}
+    
+    return false;
+  }
+
+  indexOf(el: any) {
+    for (let i = 0; i < this.len; i++) {
+      if(this.arr[i] === el) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  contains(el: any) {
+    return this.indexOf(el) !== -1;
+  }
+
+  toString() {
+    if(this.len == 0) return "[]";
+
+    let sb = "[";
+    for(let i = 0; i < this.len; i++) {
+      sb = sb.concat(this.arr[i] + ",");
+    }
+    sb = sb.concat(this.arr[this.len], "]");
+    return sb;
   }
 
   private resizeArray() {
@@ -82,3 +110,4 @@ for(let i = 1; i <= 30; i++) {
 }
 
 console.log(dArr);
+console.log(dArr.toString());
