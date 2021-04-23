@@ -1,7 +1,7 @@
 class DynamicArray {
   arr: Array<any>;
   len: number = 0; // length user thinks array is
-  capacity: number; // actual array size.
+  private capacity: number; // actual array size.
 
   constructor(capacity: number) {
     if(capacity < 0) throw new Error("Capacity invalid!");
@@ -80,9 +80,8 @@ class DynamicArray {
 
   private resizeArray() {
     if(this.capacity == 0) this.capacity = 1;
-    else this.capacity *= 2;
 
-    let new_arr = new Array(this.capacity);
+    let new_arr = new Array(this.capacity *= 2);
     for(let i = 0; i <= this.len; i++) {
       new_arr[i] = this.arr[i];
     }
