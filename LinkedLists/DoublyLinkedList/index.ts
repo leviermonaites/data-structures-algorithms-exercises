@@ -18,55 +18,57 @@ class DoublyLinkedList implements LinkedList {
   }
 
   private addLast(node: DoublyNode) {
-    if(this.tail) this.tail.next = node;
+    if (this.tail) this.tail.next = node;
     node.prev = this.tail;
     this.tail = node;
   }
 
   private addFirst(node: DoublyNode) {
-    if(this.head) this.head.prev = node;
+    if (this.head) this.head.prev = node;
     node.next = this.head;
     this.head = node;
   }
 
   remove(node: DoublyNode) {
-    let elementRemoved = false;
-    if (node === this.tail) {
-      if (this.tail.prev) {
-        this.tail = this.tail.prev;
-        this.tail.next = null;
-      } else {
-        this.head = null; // If tail hadn't any prev, it means that it was the only Node assigned to the Linked List.
-        this.tail = null;
-      }
-      elementRemoved = true;
-    }
-    
-    if (!elementRemoved && node === this.head) {
-      this.head = this.head.next;
-      if(this.head) this.head.prev = null;
-      elementRemoved = true;
-    } 
-
-    if(!elementRemoved) {
-      let trav = this.head ? this.head.next : null;
-      
-      while (trav) {
-        if (node === trav) {
-          if (trav.prev) trav.prev.next = trav.next;
-          if (trav.next) trav.next.prev = trav.prev;
-          elementRemoved = true;
-          break;
+    if (!this.isEmpty()) {
+      let elementRemoved = false;
+      if (node === this.tail) {
+        if (this.tail.prev) {
+          this.tail = this.tail.prev;
+          this.tail.next = null;
+        } else {
+          this.head = null; // If tail hadn't any prev, it means that it was the only Node assigned to the Linked List.
+          this.tail = null;
         }
-
-        trav = trav.next;
+        elementRemoved = true;
       }
-    }
 
-    if(elementRemoved) {
-      this.size--;
-      return "Element removed successfully"
-    } else return "Element not found!";
+      if (!elementRemoved && node === this.head) {
+        this.head = this.head.next;
+        if (this.head) this.head.prev = null;
+        elementRemoved = true;
+      }
+
+      if (!elementRemoved) {
+        let trav = this.head ? this.head.next : null;
+
+        while (trav) {
+          if (node === trav) {
+            if (trav.prev) trav.prev.next = trav.next;
+            if (trav.next) trav.next.prev = trav.prev;
+            elementRemoved = true;
+            break;
+          }
+
+          trav = trav.next;
+        }
+      }
+
+      if (elementRemoved) {
+        this.size--;
+        return "Element removed successfully";
+      } else return "Element not found!";
+    }
   }
 
   clear() {
@@ -102,6 +104,7 @@ const e = new DoublyNode("e");
 const f = new DoublyNode("f");
 const g = new DoublyNode("g");
 const h = new DoublyNode("h");
+const i = new DoublyNode("i");
 
 dbLinList.add(a);
 dbLinList.add(b);
@@ -112,7 +115,7 @@ dbLinList.add(f);
 dbLinList.add(g);
 dbLinList.add(h);
 
-dbLinList.remove(a);
+console.log(dbLinList.remove(i));
 
 // dbLinList.clear();
 console.log(dbLinList);
