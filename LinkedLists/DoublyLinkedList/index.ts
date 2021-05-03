@@ -31,43 +31,48 @@ class DoublyLinkedList implements LinkedList {
 
   remove(node: DoublyNode) {
     if (!this.isEmpty()) {
-      let elementRemoved = false;
-      if (node === this.tail) {
-        if (this.tail.prev) {
-          this.tail = this.tail.prev;
-          this.tail.next = null;
-        } else {
-          this.head = null; // If tail hadn't any prev, it means that it was the only Node assigned to the Linked List.
-          this.tail = null;
+      let trav = this.head ? this.head.next : null;
+
+      while (trav) {
+        if (node === trav) {
+          if (trav.prev) trav.prev.next = trav.next;
+          if (trav.next) trav.next.prev = trav.prev;
+          this.size--;
+          return "Element removed successfully";
         }
-        elementRemoved = true;
+
+        trav = trav.next;
       }
 
-      if (!elementRemoved && node === this.head) {
+      return "Element not found!";
+    }
+  }
+
+  removeFirst() {
+    if (!this.isEmpty()) {
+      if (this.head.next) {
         this.head = this.head.next;
-        if (this.head) this.head.prev = null;
-        elementRemoved = true;
+        this.head.prev = null;
+      } else {
+        this.head = null; // If head hasn't any prev, it means that it was the only Node assigned to the Linked List.
+        this.tail = null;
       }
+      this.size--;
+      return "Element removed successfully";
+    }
+  }
 
-      if (!elementRemoved) {
-        let trav = this.head ? this.head.next : null;
-
-        while (trav) {
-          if (node === trav) {
-            if (trav.prev) trav.prev.next = trav.next;
-            if (trav.next) trav.next.prev = trav.prev;
-            elementRemoved = true;
-            break;
-          }
-
-          trav = trav.next;
-        }
+  removeLast() {
+    if (!this.isEmpty()) {
+      if (this.tail.prev) {
+        this.tail = this.tail.prev;
+        this.tail.next = null;
+      } else {
+        this.head = null; // If tail hasn't any prev, it means that it was the only Node assigned to the Linked List.
+        this.tail = null;
       }
-
-      if (elementRemoved) {
-        this.size--;
-        return "Element removed successfully";
-      } else return "Element not found!";
+      this.size--;
+      return "Element removed successfully";
     }
   }
 
