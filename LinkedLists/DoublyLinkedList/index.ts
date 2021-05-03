@@ -6,6 +6,9 @@ class DoublyLinkedList implements LinkedList {
   tail: DoublyNode | null = null;
   private size: number = 0;
 
+  getSize() { return this.size }
+  isEmpty() { return this.size === 0 }
+
   add(node: DoublyNode, where: string = "tail") {
     if (this.isEmpty()) {
       this.head = node;
@@ -96,12 +99,16 @@ class DoublyLinkedList implements LinkedList {
     return "Linked list entirely cleaned";
   }
 
-  getSize() {
-    return this.size;
+  toString() {
+    let sb = "[";
+    for(let node = this.head; node; node = node.next) {
+      if(node.next) sb = sb.concat(`${node.data},`);  
+      else sb = sb.concat(`${node.data}`);
+    }
+    sb = sb.concat("]");
+    return sb;
   }
-  isEmpty() {
-    return this.size === 0;
-  }
+
 }
 
 const dbLinList = new DoublyLinkedList();
@@ -124,9 +131,7 @@ dbLinList.add(f);
 dbLinList.add(g);
 dbLinList.add(h);
 
-console.log(dbLinList.remove(i));
-
 // dbLinList.clear();
-console.log(dbLinList);
+console.log(dbLinList.toString());
 
 export default DoublyLinkedList;
