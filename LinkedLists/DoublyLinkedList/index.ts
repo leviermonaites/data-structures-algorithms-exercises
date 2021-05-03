@@ -31,6 +31,8 @@ class DoublyLinkedList implements LinkedList {
 
   remove(node: DoublyNode) {
     if (!this.isEmpty()) {
+      if(node === this.head) return this.removeFirst();
+      if(node === this.tail) return this.removeLast();
       let trav = this.head ? this.head.next : null;
 
       while (trav) {
@@ -44,13 +46,13 @@ class DoublyLinkedList implements LinkedList {
         trav = trav.next;
       }
 
-      return "Element not found!";
     }
+    return "Element not found!";
   }
 
   removeFirst() {
     if (!this.isEmpty()) {
-      if (this.head.next) {
+      if (this.head && this.head.next) {
         this.head = this.head.next;
         this.head.prev = null;
       } else {
@@ -58,13 +60,14 @@ class DoublyLinkedList implements LinkedList {
         this.tail = null;
       }
       this.size--;
-      return "Element removed successfully";
+      return "Element removed successfully!";
     }
+    return "Element not found!";
   }
 
   removeLast() {
     if (!this.isEmpty()) {
-      if (this.tail.prev) {
+      if (this.tail && this.tail.prev) {
         this.tail = this.tail.prev;
         this.tail.next = null;
       } else {
@@ -72,8 +75,9 @@ class DoublyLinkedList implements LinkedList {
         this.tail = null;
       }
       this.size--;
-      return "Element removed successfully";
+      return "Element removed successfully!";
     }
+    return "Element not found!";
   }
 
   clear() {
