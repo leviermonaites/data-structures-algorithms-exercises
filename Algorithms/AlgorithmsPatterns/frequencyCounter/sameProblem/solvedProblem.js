@@ -15,7 +15,7 @@ const same = (arr1, arr2) => {
   */
 
   for (let i = 0; i < arr1.length; i++) {
-    valuesFrequency[arr1[i] ** 2] = valuesFrequency[arr1[i] ** 2]++ || 1;
+    valuesFrequency[arr1[i] ** 2] = valuesFrequency[arr1[i] ** 2] + 1 || 1;
   }
 
   for (let i = 0; i < arr2.length; i++) {
@@ -28,3 +28,5 @@ const same = (arr1, arr2) => {
 };
 
 console.log(same([1, 2, 3], [4, 1, 9]));
+// T = O(n);
+// S = O(n / 2) = O(n);

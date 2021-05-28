@@ -42,5 +42,5 @@ const same = (arr1, arr2) => {
 console.log(same([1, 2, 3], [4, 1, 9]));
 // It works, but three loops, and three objects are not the best both in time complexity and space complexity
 
-// T = O(3n) = O(n)
+// T = O(n + n / 2) = O(n)
 // S = O(2n) = O(n)
