@@ -1,0 +1,24 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Given two strings, evaluate whether the two of them use the same letters and have the same length to be built. This concept has a technical name called anagram.
+
+	What are the inputs that go into the problem?
+	We can assume that they will always be single words without spaces, punctuations, periods and numbers.
+	We can assume that we will deal with lowercase letters
+
+	What are the outputs that should come from my solution?
+	Boolean values
+
+	Do I have enough information?
+	Yes.
+
+	How should I label important parts of the code?
+	The first parameter will be str1 and the second str2
+	An object called charFrequency to store how many times each char of the first parameter appears along the string.
+
+	Explore concrete examples:
+	validAnagram('', '') // true
+	validAnagram('aaz', 'zza') // false
+	validAnagram('anagram', 'nagaram') // true
+	validAnagram('rat', 'car') // false
+	validAnagram('cinema', 'iceman') // true

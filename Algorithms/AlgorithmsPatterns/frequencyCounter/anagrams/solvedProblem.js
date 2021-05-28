@@ -23,3 +23,5 @@ const validAnagram = (str1, str2) => {
 };
 
 console.log(validAnagram("hello", "elloh"));
+// T = O(n);
+// S = O(n / 2); = O(n);
