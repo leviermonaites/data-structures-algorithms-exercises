@@ -1,9 +1,10 @@
 import Node from '../interface/Node.ts';
 
 class SinglyNode implements Node {
-  data: any;
+  data: unknown;
   next: Node | null = null;
-  constructor(data: any) {
+
+  constructor(data: unknown) {
     this.data = data;
   }
 }

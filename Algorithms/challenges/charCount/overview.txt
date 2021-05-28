@@ -1,0 +1,31 @@
+Understand the problem:
+	Problem in my own words
+	1 - For each character in a given string, keep track of how many times the character appears in the string.
+	
+	What are the inputs?
+	2 - Inputs are going to be strings, but may be invalid inputs which you should treat.
+
+	Which is the supposed output?
+	3 - An object, which the keys contained within will be characters that appeared in the string.
+
+	Do I have enough information to solve the problem?
+	What about invalid data:
+	Return an empty object.
+
+	- What about special characters?
+	No need to care about them.
+
+	- What about differentiation between lowercased letters and uppercased ones?
+	All of them should become lowercased in our returned object.
+
+	Label for each important piece of data
+	- a parameter named string
+	- charObj for the object that we are going to manipulate
+	- for loop with a simple let i, that iterates over the string.
+
+Explore concrete examples:
+	Input: "Hello my friend."
+	Output: { h: 1, e: 2, l: 2, o: 1, m: 1, y: 1, f: 1, r: 1, i: 1, n: 1, d: 1 }
+	
+	Input: "Your code is $#2*124*("
+	Output: { y: 1, o: 2, u: 1, r: 1, c: 1, d: 1, e: 1, i: 1, s: 1, 2: 2, 1: 1, 4: 1 } 

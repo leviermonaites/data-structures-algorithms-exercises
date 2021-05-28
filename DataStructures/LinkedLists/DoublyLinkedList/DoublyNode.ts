@@ -1,11 +1,11 @@
 import Node from '../interface/Node.ts';
 
 class DoublyNode implements Node {
-  data: any;
+  data: unknown;
   prev: DoublyNode | null;
   next: DoublyNode | null;
 
-  constructor(data: any) {
+  constructor(data: unknown) {
     this.data = data;
     this.prev = null;
     this.next = null;

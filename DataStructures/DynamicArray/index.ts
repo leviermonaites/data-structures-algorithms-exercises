@@ -1,6 +1,6 @@
 class DynamicArray {
-  arr: Array<any>;
-  len: number = 0; // length user thinks array is
+  arr: Array<unknown>;
+  len = 0; // length user thinks array is
   private capacity: number; // actual array size.
 
   constructor(capacity: number) {
@@ -13,7 +13,7 @@ class DynamicArray {
   get isEmpty() { return this.size == 0; }
 
   getEl(index: number) { return this.arr[index]; }
-  setEl(index: number, elem: any) { 
+  setEl(index: number, elem: unknown) { 
     if(this.capacity >= index) this.arr[index] = elem;
   }
 
@@ -24,7 +24,7 @@ class DynamicArray {
     this.len = 0;
   }
 
-  add(elem: any) {
+  add(elem: unknown) {
     if(this.len >= this.capacity) {
       this.resizeArray();  
     }
@@ -36,17 +36,16 @@ class DynamicArray {
     if(index > this.len) return "Element not found!";
     if(index < 0) return "Element not found!";
 
-    let elIndex = index;
     this.capacity = --this.len;
-    let new_arr = new Array(this.capacity);
+    const newArr = new Array(this.capacity);
     for(let i=0, j=0; i <= this.len; i++, j++) {
-      if(i == elIndex) j--; // Skip over elIndex by fixing j temporarily
-      else new_arr[j] = this.arr[i];
+      if(i == index) j--; // Skip over index by fixing j temporarily
+      else newArr[j] = this.arr[i];
     }
-    this.arr = new_arr;
+    this.arr = newArr;
   }
 
-  remove(el: any) {
+  remove(el: unknown) {
     for (let i = 0; i < this.len; i++) {
       if(this.arr[i] === el) 
         { this.removeAt(i); return true; }}
@@ -54,7 +53,7 @@ class DynamicArray {
     return false;
   }
 
-  indexOf(el: any) {
+  indexOf(el: unknown) {
     for (let i = 0; i < this.len; i++) {
       if(this.arr[i] === el) {
         return i;
@@ -63,7 +62,7 @@ class DynamicArray {
     return -1;
   }
 
-  contains(el: any) {
+  contains(el: unknown) {
     return this.indexOf(el) !== -1;
   }
 
@@ -74,19 +73,19 @@ class DynamicArray {
     for(let i = 0; i < this.len; i++) {
       sb = sb.concat(this.arr[i] + ",");
     }
-    sb = sb.concat(this.arr[this.len], "]");
+    sb = sb.concat(this.arr[this.len] + " ]");
     return sb;
   }
 
   private resizeArray() {
     if(this.capacity == 0) this.capacity = 1;
 
-    let new_arr = new Array(this.capacity *= 2);
+    const newArr = new Array(this.capacity *= 2);
     for(let i = 0; i <= this.len; i++) {
-      new_arr[i] = this.arr[i];
+      newArr[i] = this.arr[i];
     }
 
-    this.arr = new_arr;
+    this.arr = newArr;
   }
 }
 

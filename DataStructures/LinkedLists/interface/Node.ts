@@ -1,5 +1,5 @@
 interface Node {
-  data: any;
+  data: unknown;
   next: Node | null;
   prev?: Node | null;
 }
