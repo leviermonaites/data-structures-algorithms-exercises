@@ -1,0 +1,22 @@
+Understand the problem:
+	Restate the problem in my own words.
+	Count how many times an array contains idiosyncratic integers instead of repeated ones.
+
+	What are the inputs that go into my function?
+	A sorted array of integers.
+
+	What are the outputs that should come from my solution?
+	A number representing how many times were found unique integers.
+
+	Do I have enough information?
+	No
+
+	How should I label important pieces of my code?
+	Two variables called i and j to iterate over the array.
+	One variable called counter to store how many times were found unique values.
+	
+Concrete examples:
+	countUniqueValues([1, 1, 1, 1, 1, 2]) // 2
+	countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13]) // 7
+	countUniqueValues([]) // 0
+	countUniqueValues([-2, -1, -1, 0, 1]) // 4

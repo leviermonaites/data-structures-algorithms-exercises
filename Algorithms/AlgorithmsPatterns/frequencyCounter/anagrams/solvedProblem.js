@@ -22,6 +22,6 @@ const validAnagram = (str1, str2) => {
   return true;
 };
 
-console.log(validAnagram("hello", "elloh"));
+console.log(validAnagram("iceman", "cinema"));
 // T = O(n);
 // S = O(n / 2); = O(n);

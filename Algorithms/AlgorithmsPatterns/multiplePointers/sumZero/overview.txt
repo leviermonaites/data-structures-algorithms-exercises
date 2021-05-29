@@ -1,0 +1,20 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Create a function called sumZero which takes a stored array of integers, and evaluate whether there are two numbers that when they're added up, the result is 0.
+
+	What are the inputs that go into my function:
+	Just a sorted array of integers.	
+
+	What are the outputs that should come from my solution:
+	An array with two integers which once added up to one another, it results in 0. If there isn't such pair, return undefined.
+
+	Do I have enough information?
+	Yeah.
+
+	How should I label important pieces of my code?
+	Two pointers variables, one called i and the other called j, to iterate the array.
+	
+Concrete examples:
+	sumZero([-3, -2, -1, 0, 1, 2, 3]) // [-3, 3]
+	sumZero([-2, 0, 1, 3]) // undefined
+	sumZero([1, 2, 3]) // undefined

@@ -1,0 +1,37 @@
+Understand the problem:
+	Restate the problem in my words:
+	Find the largest sequence resulting in the largest sum in an array of integers.
+	The size of the sequence is defined by a parameter num
+
+	What are the inputs that go into my function?
+	Two parameters:
+	An array of INTEGERS;
+	One integer to determine the size of the sequence.
+
+	What are the outputs that should come from my solution?
+	An integer representing the largest possible sum found.
+
+	Do I have enough information?
+	Can I assume that the array is going to be always filled with integers?
+	Yes. But maybe you'll find one empty array.
+
+	Is there a minimum to the num parameter?
+	0.
+
+	If the num parameter is 0 or the array passed is empty, what should be the output?
+	null
+	
+	What if the num parameter is greater than the length of the array?
+	The output should be null as well.
+	
+	How should I label important pieces of my code?
+	A variable called maxSum to store the current found largest sum.
+	A variable called tempSum to compare to maxSum and evaluate which of them is greater.
+
+	
+Concrete examples:
+	maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2) // 10
+	maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 4) // 17
+	maxSubarraySum([4, 2, 1, 6], 1) // 6
+	maxSubarraySum([4, 2, 1, 6, 2], 4) // 13
+	maxSubarraySum([], 4) // null
