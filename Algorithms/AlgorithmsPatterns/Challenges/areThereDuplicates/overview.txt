@@ -1,0 +1,20 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Given a number of arguments, evaluate whether there is one value appearing twice.
+
+	What are the inputs that go into my function?
+	Unlimited number of arguments
+
+	What are the outputs that should come from my solution?
+	A boolean value representing whether there was or not any duplicated value passed as argument.
+
+	Do I have enough information?
+	Yes.
+
+	How should I label important pieces of my code?
+	I should make use of an object called values to store how many times each value was passed.
+
+Concrete examples:
+	areThereDuplicates(1, 2, 3) // false
+	areThereDuplicates(1, 2, 2) // true
+	areThereDuplicates('a', 'b', 'c', 'a') // true

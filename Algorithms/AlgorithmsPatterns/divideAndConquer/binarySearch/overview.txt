@@ -1,0 +1,22 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Given a sorted array and a number, try to find the number in the sorted array without using linear search.
+	
+	What are the inputs that go into my function:
+	A sorted array and a number to be searched for.
+
+	What are the outputs that should come from my function:
+	If the number is found within the array, we should return its index.
+	If the number is not found, we should return -1.
+
+	Do I have enough information?
+	Yes.
+
+	How should I label important pieces of my code?
+	A variable called p to be some sort of a pivot that will have the value of the middle index of the array.
+	
+
+Concrete examples:
+	search([1, 2, 3, 4, 5, 6], 4) // 3
+	search([1, 2, 3, 4, 5, 6], 6) // 5
+	search([1, 2, 3, 4, 5, 6], 11) // -1

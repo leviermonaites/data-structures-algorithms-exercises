@@ -1,0 +1,23 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Given an array of integers and a target average, try to find two integers within the array which average is equal to the target average.
+
+	What are the inputs that go into my function?
+	An array of integers, and a number representing the target average.
+
+	What are the outputs that should come from my solution?
+	Boolean values representing whether there was or not a pair found.
+
+	Do I have enough information?
+	Yes
+
+	How should I label each important piece of my code?
+	Two variables one called start and the other called end
+	The start variable should have its initial value set to 0 -> Representing the first index of the array
+	The end variable should have its initial value set to arr.length - 1 -> Representing the last index of the array.
+
+Concrete examples:
+	averagePair([1, 2, 3], 2.5) // true
+	averagePair([1, 3, 3, 5, 6, 7, 10, 12, 19], 8]) // true
+	averagePair([-1, 9, 3, 4, 5, 6], 4.1) // false
+	averagePair([], 4) // false

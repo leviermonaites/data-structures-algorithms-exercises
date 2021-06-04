@@ -1,0 +1,29 @@
+Understand the problem:
+	Restate the problem in my own words:
+	Given a string, find its largest no word repeating substring.
+
+	What are the inputs that go into my function?
+	Any type of string.
+
+	What are the outputs that should come from my function?
+	An integer representing the amount of individual characters.
+
+	Do I have enough information?
+	Is it possible that I'll come across with spaces in the given string?
+	No
+
+	What about case sensitivity?
+	All letters will lowercase
+
+	How should I label important pieces of my code?
+	An object called charsObj to store whether a character has already appeared in the string.
+	Create counter variable to store how many individual characters were found.
+
+Concrete examples:
+	findLongestSubstring('') // 0
+	findLongestSubstring('rithmschool') // 7
+	findLongestSubstring('thisisawesome') // 6
+	findLongestSubstring('thecatinthehat') // 7
+	findLongestSubstring('bbbbbb') // 1
+	findLongestSubstring('longestsubstring') // 8
+	findLongestSubstring('thisishowwedoit') // 6

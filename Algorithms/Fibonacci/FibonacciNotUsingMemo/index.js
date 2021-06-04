@@ -18,7 +18,7 @@
 
 /*
     This code is smaller than the original file, but it's not better, if you try to execute it with a high number, like 100, you'll see the difference.
-    The best way is the dynamic code, stored in the FibonacciMemoize folders.
+    The best way is the dynamic code, stored in the FibonacciMemoize folder.
 */
 
 const fibonacci = (n) => {
@@ -26,4 +26,4 @@ const fibonacci = (n) => {
   else return 1;
 };
 
-console.log(fibonacci(4));
+console.log(fibonacci(1000));
