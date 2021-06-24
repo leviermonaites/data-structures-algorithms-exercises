@@ -45,6 +45,9 @@ const kmp = (str, pat) => {
   return matches;
 };
 
-console.log(kmp("adsgwadsxdsgwadsgz", "dsgwadsgz"));
+console.log(kmp("adsgwadsxdsgwrdsgzdsgwadsgz", "dsgwadsgz"));
 console.log(kmp("ABABDABACDABABCABAB", "ABABCABAB"));
 // console.log(kmp("bbaba", "a"));
+
+// T = O(m + n);
+// S = O(m);
