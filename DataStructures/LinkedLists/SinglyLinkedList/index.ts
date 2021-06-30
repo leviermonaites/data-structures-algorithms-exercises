@@ -1,13 +1,14 @@
-import LinkedList from "../interface/LinkedList.ts";
 import SinglyNode from "./SinglyNode.ts";
 
-class SinglyLinkedList implements LinkedList {
+class SinglyLinkedList  {
   head: SinglyNode | null = null;
+  tail: SinglyNode | null = null;
 
   add(data: unknown) {
     const node = new SinglyNode(data);
     if (!this.head) this.head = node; // If there's not an object at top, it means that it's the first node.
-    else this.head.next = node;
+    if(this.tail) this.tail.next = node;
+    this.tail = node;
     return true;
   }
 
@@ -36,6 +37,15 @@ class SinglyLinkedList implements LinkedList {
     }
 
     return false;
+  }
+
+  get(index: number) {
+    let node = this.head;
+    for(let i = 0; i < index; i++) {
+      if(node) node = node.next;
+      else return undefined;
+    }
+    return node;
   }
 
   clear() {
@@ -71,7 +81,7 @@ linkedList.add(e);
 linkedList.add(f);
 
 // console.log(linkedList.remove(d)); // Expected output: "Removed successfully!";
-console.log(linkedList.clear());
+// console.log(linkedList.clear());
 console.log(linkedList);
 
 export default SinglyLinkedList;
