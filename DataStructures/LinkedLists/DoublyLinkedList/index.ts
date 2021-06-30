@@ -1,6 +1,6 @@
 import DoublyNode from "./DoublyNode.ts";
 
-class DoublyLinkedList implements DataStructure {
+class DoublyLinkedList  {
   elements: { head: DoublyNode | null; tail: DoublyNode | null } = {
     head: null,
     tail: null,
