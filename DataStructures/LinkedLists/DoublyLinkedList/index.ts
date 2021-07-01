@@ -91,20 +91,16 @@ class DoublyLinkedList implements LinkedList {
     return true;
   }
 
-  findAndRemove(node: DoublyNode) {
+  remove(node: DoublyNode) {
     if (!this.isEmpty()) {
       if (this.head === node) return this.shift();
       if (this.tail === node) return this.pop();
 
-      let trav = this.head ? this.head.next : null;
-
-      while(trav) {
-        if(trav === node) {
-          if (trav.prev) trav.prev.next = trav.next;
-          if (trav.next) trav.next.prev = trav.prev;
-          this.decrementLength();
-          return true;
-        } else trav = trav.next;
+      const trav = this.search(node);
+      if(trav) {
+        if(trav.prev) trav.prev.next = trav.next;
+        if(trav.next) trav.next.prev = trav.prev;
+        return true;
       }
     }
     return undefined;
