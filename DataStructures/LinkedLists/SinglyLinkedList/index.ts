@@ -1,76 +1,87 @@
+import LinkedList from "../interface/LinkedList.ts";
 import SinglyNode from "./SinglyNode.ts";
 
-class SinglyLinkedList {
+class SinglyLinkedList implements LinkedList {
   head: SinglyNode | null = null;
   tail: SinglyNode | null = null;
-  length = 0;
+  private length = 0;
 
-  get(index: number) {
-    let node = this.head;
-    for (let i = 0; i < index; i++) {
-      if (node) node = node.next;
-      else return undefined;
+  getSize() {
+    return this.length;
+  }
+
+  isEmpty() {
+    return this.getSize() === 0;
+  }
+
+  private incrementLength() {
+    this.length++;
+  };
+
+  private decrementLength() {
+    this.length--;
+  }
+
+  search(node: SinglyNode) {
+    let trav = this.head;
+    while(trav) {
+      if(trav === node) return trav;
+      else trav = trav.next
     }
+
+    return undefined;
+  }
+
+  addWhenEmpty(data: unknown) {
+    const node = new SinglyNode(data);
+    this.head = node;
+    this.tail = node;
+    this.head.next = this.tail;
+    this.incrementLength();
     return node;
   }
 
-  set(data: unknown, index: number) {
-    const node = this.get(index);
-    if (!node) return undefined;
-    node.data = data;
-    return true;
-  }
-
   push(data: unknown) {
+    if(this.getSize() < 1) return this.addWhenEmpty(data);
+    
     const node = new SinglyNode(data);
-    if (!this.head) this.head = node; // If there's not an object at top, it means that it's the first node.
     if (this.tail) this.tail.next = node;
     this.tail = node;
-    this.length++;
-    return true;
+    this.incrementLength();
+    return node;
   }
 
   unshift(data: unknown) {
+    if(this.length < 1) return this.addWhenEmpty(data);
+
     const node = new SinglyNode(data);
     node.next = this.head;
     this.head = node;
-    return true;
+    return node;
   }
 
-  insert(data: unknown, index: number) {
-    if (index < 0) return undefined;
-    const node = new SinglyNode(data);
+  pop() {
+    if(!this.tail) return true;
 
-    if (index === 0) {
-      node.next = this.head;
-      this.head = node;
-    } else if (index === this.length - 1) this.push(data);
-    else {
-      const prevNode = this.get(index - 1);
-      if (!prevNode) return undefined;
-      node.next = prevNode.next;
-      prevNode.next = node;
+    let trav = this.head;
+    while(trav) {
+      if(!trav.next && trav === this.tail) {
+        trav.next = null;
+        this.tail = trav;
+        return true;
+      } else trav = trav.next;
     }
-    this.length++;
-    return true;
+    return undefined;
   }
 
   shift() {
-    if (!(this.length > 2)) this.clear();
-    if (this.head) this.head = this.head.next;
-    return true;
+    if (this.head) {
+      this.head = this.head.next;
+      return true;
+    } else return undefined;
   }
 
-  remove(index: number) {
-    if (!this.head || index < 0 || index > this.length) return undefined;
-    if (index === 0) this.shift();
-    const prevNode = this.get(index - 1);
-    if (prevNode) prevNode.next = prevNode.next ? prevNode.next.next : null;
-    this.length--;
-    return true;
-  }
-
-  findAndRemove(node: SinglyNode) {
+  remove(node: SinglyNode) {
     if (this.head === node) {
       this.head = this.head.next;
       return true;
@@ -83,7 +94,7 @@ class SinglyLinkedList {
       do {
         if (trav2 === node) {
           if (trav) trav.next = trav2.next;
-          this.length--;
+          this.decrementLength();
           return true;
         }
 
@@ -100,14 +111,10 @@ class SinglyLinkedList {
   clear() {
     let node = this.head;
     while (node) {
-      // Node.next may be null
-      let removable = node.next; // The name removable was chosen because of this particular line and not the below one.
-
-      if (removable) removable = removable.next; // Removable will be another node or a null after this line.
-
+      let removable = node.next;
+      if (removable) removable = removable.next;
       node.next = null;
-
-      node = removable; // It may be null from now, if it is, the wile statement ends up, and we just clean the head in the below statement.
+      node = removable; 
     }
     this.head = null;
     this.length = 0;
@@ -152,10 +159,7 @@ linkedList.push(d);
 linkedList.push(e);
 linkedList.push(f);
 
-// linkedList.insert(d, 1);
-
 linkedList.reverse();
-console.log(linkedList.get(5));
 
 // console.log(linkedList.remove(d));
 // console.log(linkedList.clear());
