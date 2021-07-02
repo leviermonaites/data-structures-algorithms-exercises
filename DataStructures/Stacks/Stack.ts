@@ -1,31 +1,44 @@
-import DoublyLinkedList from '../LinkedLists/DoublyLinkedList/index.ts';
-import DoublyNode from '../LinkedLists/DoublyLinkedList/DoublyNode.ts';
+import LinkedList from '../LinkedLists/interface/LinkedList.ts';
 
 interface Stack {
-  length: number;
-  readonly elements: DoublyLinkedList;
+  readonly elements: Array<unknown> | LinkedList;
 
-  clear(): void;
+  clear(): boolean;
 
-  // Creates a shallow copy of the Stack.
-  clone(): void
+  /**
+   * Creates a shallow copy of the Stack.
+   */
+  clone(): Stack;
 
-  // Determines whether an element is in the Stack.
-  contains(el: unknown): false | DoublyNode;
+  /**
+   * Returns whether an element is in the Stack. 
+   */
+  contains(el: unknown): boolean;
 
-  // Returns the object at the top of the Stack without removing it.
+  /** 
+   * Returns the element at the top of the Stack without removing it.
+   */
   peek(): void;
 
-  // Removes and returns the object at the top of the Stack.
+  /** 
+   * Removes and returns the element at the top of the Stack.
+   */
   pop(): void;
 
-  // Inserts an object at the top of the Stack.
-  push(el: unknown): void;
+  /**
+   * Inserts an element at the top of the Stack and returns the element added.
+   * @param el - anything that you want to insert in the top of the stack.
+   */
+  push(el: unknown): unknown;
 
-  // Copies the Stack to a new array
+  /**
+   * Returns an array that represents the current state of the stack
+   */
   toArray(): Array<unknown>;
 
-  // Returns a string that represents the current object
+  /**
+   * Returns a string that represents the current state of the stack
+   */
   toString(): string;
 }
 
