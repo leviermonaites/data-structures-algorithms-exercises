@@ -2,16 +2,18 @@ import LinkedList from "../interface/LinkedList.ts";
 import DoublyNode from "./DoublyNode.ts";
 
 class DoublyLinkedList implements LinkedList {
-  head: DoublyNode | null = null;
-  tail: DoublyNode | null = null;
-  length = 0;
+  head: DoublyNode | null | undefined;
+  tail: DoublyNode | null | undefined;
+  private size = 0;
+
+  get length() { return this.size; }
 
   private addWhenEmpty(node: DoublyNode) {
     this.head = node;
     this.tail = node;
     this.tail.prev = this.head;
     this.head.next = this.tail;
-    this.length++;
+    this.size++;
     return node;
   }
 
@@ -27,7 +29,7 @@ class DoublyLinkedList implements LinkedList {
       }
       this.head = this.tail = node;
     }
-    this.length = 0;
+    this.size = 0;
     return true;
   }
 
@@ -40,29 +42,29 @@ class DoublyLinkedList implements LinkedList {
     return false;
   }
 
-  isEmpty() { return this.length === 0 }
+  isEmpty() { return this.size === 0 }
 
   pop() {
     if (!this.isEmpty()) {
+      let returnVal: unknown = 0;
       const tempTail = this.tail;
-      if (this.length - 1 === 0) {
+
+      if (this.size - 1 === 0) {
         const tempHead = this.head;
         this.head = this.tail = null;
-        return tempHead || undefined;
-      }
-
-      if (this.length - 1 === 1) {
+        returnVal = tempHead?.data;
+      } else if (this.size - 1 === 1) {
         this.tail = this.head;
         if (this.head) this.head.next = this.tail;
         if (this.tail) this.tail.prev = this.head;
-        return tempTail || undefined;
+        returnVal = tempTail?.data;
+      } else {
+        if (this.tail) this.tail = this.tail.prev;
+        if (this.tail) this.tail.next = null;
       }
-
-      if (this.tail) this.tail = this.tail.prev;
-      if (this.tail) this.tail.next = null;
-      this.length--;
-
-      return tempTail || undefined;
+      
+      this.size--;
+      return returnVal;
     }
   }
 
@@ -72,21 +74,22 @@ class DoublyLinkedList implements LinkedList {
     if (this.tail) this.tail.next = node;
     node.prev = this.tail;
     this.tail = node;
-    this.length++;
+    this.size++;
     return node;
   }
 
   remove(data: unknown) {
     if (!this.isEmpty()) {
-      if (this.head && this.head.data === data) return this.shift();
-      if (this.tail && this.tail.data === data) return this.pop();
+      if (this.head?.data === data) return this.shift();
+      if (this.tail?.data === data) return this.pop();
 
       const trav = this.search(data);
       if (trav) {
         const node = trav;
         if (trav.prev) trav.prev.next = trav.next;
         if (trav.next) trav.next.prev = trav.prev;
-        return node;
+        this.size--;
+        return node.data;
       }
     }
   }
@@ -115,33 +118,26 @@ class DoublyLinkedList implements LinkedList {
   }
 
   shift() {
+    const tempHead = this.head;
     if (!this.isEmpty()) {
-      if (this.length - 1 === 0) {
-        const tempHead = this.head;
+      if (this.size - 1 === 0) {
         this.head = this.tail = null;
-        this.length--;
-        return tempHead || undefined;
-      }
-
-      if (this.length - 1 === 1) {
-        const tempHead = this.head;
+      } else if (this.size - 1 === 1) {
         this.head = this.tail;
-        if (this.tail) this.tail.prev = null;
-        this.length--;
-        return tempHead || undefined;
+        if(this.tail) this.tail.prev = null;
       }
 
-      const tempHead = this.head;
-      if (this.head) this.head = this.head.next;
-      if (this.head) this.head.prev = null;
-
-      this.length--;
-      return tempHead || undefined;
+      else {
+        this.head = this.head?.next;
+        if (this.head) this.head.prev = null;
+      }
+      this.size--;
+      return tempHead?.data;
     }
   }
 
   toArray() {
-    const arr = new Array(this.length);
+    const arr = new Array(this.size);
     let node = this.head;
     for (let i = 0; i < arr.length; i++) {
       arr[i] = node ? node.data : null;
@@ -166,7 +162,7 @@ class DoublyLinkedList implements LinkedList {
     if (this.head) this.head.prev = node;
     node.next = this.head;
     this.head = node;
-    this.length++;
+    this.size++;
     return node;
   }
 }

@@ -1,8 +1,8 @@
 import Node from "./Node.ts";
 
 interface LinkedList {
-  head: Node | null;
-  tail: Node | null;
+  head: Node | null | undefined;
+  tail: Node | null | undefined;
   length: number;
 
   /**
@@ -23,7 +23,7 @@ interface LinkedList {
   /**
    * Removes the tail of the Linked List and returns it, if no tail is found returns undefined.
    */
-  pop(): Node | undefined;
+  pop(): unknown;
 
   /**
    * Given any type of data, stores a new node at the tail of the Linked List and returns it.
@@ -34,7 +34,7 @@ interface LinkedList {
   /**
    * Given some data, finds a Node removes it and returns it. If the given data is not found on the LinkedList it returns undefined.
    */
-  remove(data: unknown): Node | undefined;
+  remove(data: unknown): unknown;
 
   /**
    * Reverses the order of the Linked List.
@@ -47,9 +47,9 @@ interface LinkedList {
   search(data: unknown): Node | undefined;
 
   /**
-   * Removes the head of the Linked List, if no head is found returns undefined.
+   * Removes the head of the Linked List and returns its value, if no head is found returns undefined.
    */
-  shift(): Node | undefined;
+  shift(): unknown;
 
   /**
    * Given any type of data, stores a new node at the head of the Linked List and returns it.

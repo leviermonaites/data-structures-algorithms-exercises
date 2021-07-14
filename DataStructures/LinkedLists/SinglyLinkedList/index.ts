@@ -2,16 +2,18 @@ import LinkedList from "../interface/LinkedList.ts";
 import SinglyNode from "./SinglyNode.ts";
 
 class SinglyLinkedList implements LinkedList {
-  head: SinglyNode | null = null;
-  tail: SinglyNode | null = null;
-  length = 0;
+  head: SinglyNode | null | undefined;
+  tail: SinglyNode | null | undefined;
+  private size = 0;
+
+  get length() { return this.size }
 
   private addWhenEmpty(data: unknown) {
     const node = new SinglyNode(data);
     this.head = node;
     this.tail = node;
     this.head.next = this.tail;
-    this.length++;
+    this.size++;
     return node;
   }
 
@@ -24,7 +26,7 @@ class SinglyLinkedList implements LinkedList {
       node = removable; 
     }
     this.head = null;
-    this.length = 0;
+    this.size = 0;
     return true;
   }
 
@@ -34,11 +36,11 @@ class SinglyLinkedList implements LinkedList {
   }
 
   isEmpty() {
-    return this.length === 0;
+    return this.size === 0;
   }
 
   pop() {
-    if(this.length < 1) return undefined;
+    if(this.size < 1) return undefined;
 
     let trav = this.head;
     while(trav) {
@@ -46,18 +48,18 @@ class SinglyLinkedList implements LinkedList {
         const tempTail = this.tail;
         trav.next = null;
         this.tail = trav;
-        return tempTail;
+        return tempTail.data;
       } else trav = trav.next;
     }
   }
 
   push(data: unknown) {
-    if(this.length < 1) return this.addWhenEmpty(data);
+    if(this.size < 1) return this.addWhenEmpty(data);
     
     const node = new SinglyNode(data);
     if (this.tail) this.tail.next = node;
     this.tail = node;
-    this.length++;
+    this.size++;
     return node;
   }
 
@@ -76,7 +78,7 @@ class SinglyLinkedList implements LinkedList {
         if (trav2.data === data) {
           const tempTrav2 = trav2;
           if (trav) trav.next = trav2.next;
-          this.length--;
+          this.size--;
           return tempTrav2;
         }
 
@@ -124,12 +126,12 @@ class SinglyLinkedList implements LinkedList {
     if (this.head) {
       const tempHead = this.head;
       this.head = this.head.next;
-      return tempHead;
-    } else return undefined;
+      return tempHead.data;
+    }
   }
 
   toArray() {
-    const arr = new Array(this.length);
+    const arr = new Array(this.size);
     let node = this.head;
     for (let i = 0; i < arr.length; i++) {
       arr[i] = node ? node.data : null;
@@ -149,7 +151,7 @@ class SinglyLinkedList implements LinkedList {
   }
 
   unshift(data: unknown) {
-    if(this.length < 1) return this.addWhenEmpty(data);
+    if(this.size < 1) return this.addWhenEmpty(data);
 
     const node = new SinglyNode(data);
     node.next = this.head;

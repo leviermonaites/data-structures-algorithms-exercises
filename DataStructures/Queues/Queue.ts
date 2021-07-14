@@ -9,7 +9,7 @@ interface Queue {
   clear(): boolean;
 
   /**
-   * Removes the first element in the front of the queue.
+   * Removes the first element in the front of the queue and return its value.
    */
   dequeue(): unknown;
 
