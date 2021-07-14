@@ -12,9 +12,9 @@ class BST implements BinaryTree {
   }
 
   bfs() {
-    const nodes = new Array(this.length);
-    
-    const queue = new Queue();
+    const nodes = new Array(this.length),
+          queue = new Queue();
+
     queue.enqueue(this.root);
     
     for(let i = 0; i < nodes.length; i++) {
@@ -24,6 +24,18 @@ class BST implements BinaryTree {
       nodes[i] = node.value;
     }
   
+    return nodes;
+  }
+
+  dfsPre() {
+    const nodes = [];
+
+    (function iterate(node: BinaryNode | null) {
+      if(node) nodes.push(node.value);
+      if(node?.left) iterate(node.left);
+      if(node?.right) iterate(node.right);
+    })(this.root);
+
     return nodes;
   }
 
@@ -68,9 +80,6 @@ class BST implements BinaryTree {
 
     return this.root;
   }
-
-
-
 }
 
 export default BST;
