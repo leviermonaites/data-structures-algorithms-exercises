@@ -1,5 +1,5 @@
-import Queue from './Queue.ts';
-import SinglyLinkedList from '../LinkedLists/SinglyLinkedList/index.ts';
+import Queue from './Queue';
+import SinglyLinkedList from '../LinkedLists/SinglyLinkedList/index';
 
 class SinglyLinkedListBasedQueue implements Queue {
   elements: SinglyLinkedList = new SinglyLinkedList();

@@ -1,5 +1,5 @@
-import LinkedList from "../interface/LinkedList.ts";
-import DoublyNode from "./DoublyNode.ts";
+import LinkedList from "../interface/LinkedList";
+import DoublyNode from "./DoublyNode";
 
 class DoublyLinkedList implements LinkedList {
   head: DoublyNode | null | undefined;

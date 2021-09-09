@@ -1,4 +1,4 @@
-import LinkedList from '../LinkedLists/interface/LinkedList.ts';
+import LinkedList from '../LinkedLists/interface/LinkedList';
 
 interface Queue {
   readonly elements: Array<unknown> | LinkedList;

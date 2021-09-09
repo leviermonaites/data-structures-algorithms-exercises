@@ -1,4 +1,4 @@
-import Queue from './Queue.ts';
+import Queue from './Queue';
 
 class ArrayBasedQueue implements Queue {
   elements: Array<unknown> = [];

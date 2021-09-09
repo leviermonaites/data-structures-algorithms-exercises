@@ -1,5 +1,5 @@
-import SinglyLinkedList from '../LinkedLists/SinglyLinkedList/index.ts';
-import Stack from "./Stack.ts";
+import SinglyLinkedList from '../LinkedLists/SinglyLinkedList/index';
+import Stack from "./Stack";
 
 class SinglyLinkedListBasedStack implements Stack {
   readonly elements: SinglyLinkedList = new SinglyLinkedList();

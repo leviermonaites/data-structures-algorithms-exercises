@@ -1,6 +1,6 @@
-import BinaryTree from "../interface/BinaryTree.ts";
-import BinaryNode from "../BinaryNode.ts";
-import Queue from '../../../Queues/SinglyLinkedListBasedQueue.ts';
+import BinaryTree from "../interface/BinaryTree";
+import BinaryNode from "../BinaryNode";
+import Queue from '../../../Queues/SinglyLinkedListBasedQueue';
 
 
 class BST implements BinaryTree {

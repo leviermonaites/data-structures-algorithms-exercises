@@ -1,5 +1,5 @@
-import LinkedList from "../interface/LinkedList.ts";
-import SinglyNode from "./SinglyNode.ts";
+import LinkedList from "../interface/LinkedList";
+import SinglyNode from "./SinglyNode";
 
 class SinglyLinkedList implements LinkedList {
   head: SinglyNode | null | undefined;

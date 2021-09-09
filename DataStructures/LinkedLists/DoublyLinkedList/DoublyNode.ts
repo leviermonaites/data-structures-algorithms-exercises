@@ -1,4 +1,4 @@
-import Node from '../interface/Node.ts';
+import Node from '../interface/Node';
 
 class DoublyNode implements Node {
   data: unknown;

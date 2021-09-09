@@ -1,4 +1,4 @@
-import Stack from "./Stack.ts";
+import Stack from "./Stack";
 class ArrayBasedStack implements Stack {
   elements: Array<unknown> = [];
 

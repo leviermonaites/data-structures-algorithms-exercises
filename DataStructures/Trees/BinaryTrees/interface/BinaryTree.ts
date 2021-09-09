@@ -1,5 +1,5 @@
-import Tree from '../../Tree.ts';
-import BinaryNode from '../BinaryNode.ts';
+import Tree from '../../Tree';
+import BinaryNode from '../BinaryNode';
 
 interface BinaryTree extends Tree {
   root: BinaryNode | null;
