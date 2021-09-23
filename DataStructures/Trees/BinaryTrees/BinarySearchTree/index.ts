@@ -1,6 +1,7 @@
 import BinaryTree from "../interface/BinaryTree";
 import BinaryNode from "../BinaryNode";
 import Queue from '../../../Queues/SinglyLinkedListBasedQueue';
+import { AcceptedDataType } from '../types/AcceptedDataType';
 
 
 class BST implements BinaryTree {
@@ -39,7 +40,7 @@ class BST implements BinaryTree {
     return nodes;
   }
 
-  find(value: number) {
+  find(value: AcceptedDataType) {
     if(this.root && this.root.value === value) return this.root;
     else {
       let trav = this.root;
@@ -54,7 +55,7 @@ class BST implements BinaryTree {
     }
   }
 
-  insert(value: number) {
+  insert(value: AcceptedDataType) {
     const node = new BinaryNode(value);
     if (!this.root) this.root = node;
     else {

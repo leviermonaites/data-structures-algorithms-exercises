@@ -1,11 +1,12 @@
 import Node from '../Node';
+import { AcceptedDataType } from './types/AcceptedDataType';
 
-class BinaryNode implements Node {
-  value: number;
+class BinaryNode implements Node<AcceptedDataType> {
+  value: AcceptedDataType;
   left: BinaryNode | null = null;
   right: BinaryNode | null = null;
 
-  constructor(value: number) {
+  constructor(value: AcceptedDataType) {
     this.value = value;
   }
 }

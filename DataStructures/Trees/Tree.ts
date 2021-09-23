@@ -1,10 +1,10 @@
 import Node from './Node';
 
-interface Tree {
-  root: Node | null;
+interface Tree<T> {
+  root: Node<T> | null;
   length: number;
-  insert(value: unknown): Node;
-  find(value: unknown): Node | null;
+  insert(value: T): Node<T>;
+  find(value: T): Node<T> | null;
 }
 
 export default Tree;

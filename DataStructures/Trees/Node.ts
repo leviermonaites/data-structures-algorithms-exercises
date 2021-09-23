@@ -1,5 +1,5 @@
-interface Node {
-  value: unknown;
+interface Node<T> {
+  value: T;
 }
 
 export default Node;
